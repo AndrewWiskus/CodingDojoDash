@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log and Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+</head>
+<body>
+    <div class=container>
+        <div class=reglog>
+            <img src="{% static 'img/AWLogo.jpg' %}" alt="AWLogo">
+            <h1>Register . . .</h1>
+            
+            {% if messages %}
+                <ul>
+                    {% for error in messages %}
+                    <li>{{error}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div class=regform>
+                <form action="/create_user" method="post">
+                    {% csrf_token %}
+                    <label for="first_name">First Name:</label>
+                    <br>
+                    <input type="text" name="f_n">
+                    <br>
+                    <br>
+                    <label for="last_name">Last Name:</label>
+                    <br>
+                    <input type="text" name="l_n">
+                    <br>
+                    <br>
+                    <label for="email">Email:</label>
+                    <br>
+                    <input type="email" name="email">
+                    <br>
+                    <br>
+                    <label for="password">Password:</label>
+                    <br>
+                    <input type="password" name="pw">
+                    <br>
+                    <br>
+                    <label for="confirm_password">Confirm Password:</label>
+                    <br>
+                    <input type="password" name="conf_pw">
+                    <br>
+                    <br>
+                    <input type="submit" value="Register">
+                </form>
+            </div>
+        </div>
+        <div class=reglog>
+            <img src="{% static 'img/AWLogo.jpg' %}" alt="AWLogo">
+            <h1>Login . . .</h1>
+            <div class=regform>
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <label for="email">Email:</label>
+                    <br>
+                    <input type="email" name="email">
+                    <br>
+                    <br>
+                    <label for="password">Password:</label>
+                    <br>
+                    <input type="password" name="pw">
+                    <br>
+                    <br>
+                    <input type="submit" value="Log In">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

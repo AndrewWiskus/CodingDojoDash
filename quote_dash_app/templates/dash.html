@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+</head>
+<body>
+    <div class=container>
+        <div class=header>
+            <h2>Welcome {{request.session.user_name}}!</h2>
+            <a href="/edit_account/{{request.session.user_id}}">Edit My Account</a> 
+            <a href="/logout"><input type="submit" value=Logout></a>
+        </div>
+
+        {% if messages %}
+        <ul>
+            {% for error in messages %}
+            <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div class=quote_column>
+            <h2>Quotes</h2>
+            {% for quote in all_quotes %}
+            <div class=quote_box>
+                <p>{{quote.author}}:</p>
+                <p>"{{quote.content}}"</p>
+                <p>Posted by <a href="user_quotes/{{quote.poster.id}}">{{quote.poster.first_name}} {{quote.poster.last_name}}</a></p>
+                {% if quote.poster.id == request.session.user_id%}
+                <a href="/delete/{{quote.id}}">Delete Quote</a>
+                {% endif %}
+                <p>{{quote.likes.count}} people like this</p>
+                <form action="/like/{{request.session.user_id}}/{{quote.id}}">
+                    {% csrf_token %}
+                    <input type="submit" value="like">
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+        <div id=add_quote_column>
+            <h2>Add a Quote!</h2>
+            <form action="/create_quote" method=POST>
+                {% csrf_token %}
+                <label for="autor">Author:</label>
+                <br>
+                <input type="text" name="author">
+                <br>
+                <br>
+                <label for="quote">Quote:</label>
+                <br>
+                <textarea name="content" cols="19" rows="4"></textarea>
+                <br>
+                <br>
+                <input type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
