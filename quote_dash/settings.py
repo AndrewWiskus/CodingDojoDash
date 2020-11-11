@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x%j$i8=usjsu3is4nw$jr)met1v6q%c_*!y_vvdd)3naw-b8gk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['ec2-3-129-58-242.us-east-2.compute.amazonaws.com']
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 # Application definition
 
