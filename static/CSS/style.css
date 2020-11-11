@@ -1,0 +1,69 @@
+html * {
+    font-family: arial;
+}
+
+.container {
+    width: 1000px;
+    margin: auto;
+    background-color: black;
+    padding: 25px;
+}
+
+.reglog {
+    height: 500px;
+    width: 250px;
+    display: inline-block;
+    background-color: aquamarine;
+    padding: 25px;
+    margin: 95px;
+    vertical-align: top;
+}
+.reglog > input, label {
+    margin: 25px;
+    display: inline;
+    text-align: center;
+}
+.reglog > img {
+    width: 40px;
+    border-radius: 25px;
+}
+.regform {
+    width: 250px;
+}
+.header {
+    background-color: aquamarine;
+    padding: 20px;
+}
+.header > h2 {
+    display: inline-block;
+    margin-right: 450px;
+}
+.quote_column {
+    width: 300px;
+    display: inline-block;
+    background-color: aquamarine;
+    padding: 10px;
+    margin: 20px;
+}
+.quote_box {
+    border: 2px solid black;
+    padding: 20px;
+    margin: 10px;
+}
+#add_quote_column {
+    width: 190px;
+    display: inline-block;
+    border: 2px solid black;
+    background-color: aquamarine;
+    margin-left: 50px;
+    margin-top: 20px;
+    padding: 20px;
+    vertical-align: top;
+}
+#edit_column {
+    width: 250px;
+    padding: 25px;
+    margin: 20px;
+    display: inline-block;
+    background-color: aquamarine;
+}
